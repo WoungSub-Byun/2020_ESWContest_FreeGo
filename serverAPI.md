@@ -146,3 +146,28 @@ API 명세
     SUCCESS { "code": 200, "message": "delete success" }
     FAIL { "code": 404, "message": "fail" }
 ```
+바코드정보로 상품정보 조회
+-
+```
+    POST /lookupcode
+```
+- Request
+```
+{
+    "gtin": 0000000000000 #13자리수
+}
+```
+- Response
+```
+    SUCCESS {"code": 200,
+            "data": [
+                "0000000000000",       #gtin정보
+                "동원참치",             #상품이름, 정보
+                "(주)동원",             #만든 회사
+                "KOREA, REPUBLIC OF",  #원산지 정보
+                "http://이미지링크"     #상품이미지링크
+            ],
+            "message" : "success"
+    }
+    FAIL { "code": 404, "message": "fail" }
+```

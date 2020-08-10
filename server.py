@@ -1,12 +1,16 @@
 from flask import Flask, request, jsonify
 import json
 import datetime
+import sqlite3, os
 from orm import controller
-
 
 
 app = Flask(__name__)
 
+@app.route('/', methods=['GET'])
+def test():
+    return jsonify({"code":200,
+                    "message": "hellouser"})
 
 @app.route('/init', methods=['GET'])
 def create_table():
@@ -100,6 +104,7 @@ def update_entry():
         return jsonify({"code": 200,
                         "message": "success"})
 
+# Insert data
 @app.route('/insert', methods=['POST'])
 def insert_entry():
     if request.method == 'POST':
@@ -128,7 +133,7 @@ def insert_entry():
             return jsonify({"code": 404,
                             "message": "already exist"})
         
-# 재료 삭제
+# Delete data from database
 @app.route('/delete', methods=['POST'])
 def delete_entry():
     data = request.get_json()
@@ -140,8 +145,37 @@ def delete_entry():
 
     return jsonify({"code": 200,
                     "message":"success"})
+##
+#Use the Barcode
+##
+#Lookup the gtin num in database
+@app.route('/lookupcode', methods=['POST'])
+def select_barcode():
+    data = request.get_json()
+    result = find_code(data["gtin"])
 
+    if not result: #There's no data for barcode from user
+        return jsonify({"code": 404,
+                        "message": "fail"})
+    # result = json.dumps({"gtin": result[0],
+    #                     "p_desc": result[1],
+    #                     "p_country": result[2],
+    #                     "p_img": result[3]})
+    return jsonify({"code": 200,
+                    "message": "success",
+                    "data": result})
 
+def find_code(GTIN):
+    conn = sqlite3.connect('barcode.db')
+    cs = conn.cursor()
+
+    query = "select * from BARCODE_TB where GTIN={}".format(GTIN)
+    cs.execute(query)
+    rows = cs.fetchall()
+    conn.close()
+    if not rows:
+        return False
+    return list(rows[0])
 
 if __name__ == '__main__':
     app.run(debug=True)

@@ -28,4 +28,4 @@ class PRODUCT_TB(Base):
         self.p_ex_date = p_ex_date
 
     def __repr__(self):
-        return "Food( id={}, p_name={}, p_number={}, p_ex_date={})".format(self.idx, self.id, self.p_name, self.p_number, self.p_ex_date)
+        return "Food( id={}, p_name={}, p_number={}, p_ex_date={})".format( self.id, self.p_name, self.p_number, self.p_ex_date)
