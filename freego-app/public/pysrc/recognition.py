@@ -52,9 +52,9 @@ def voice_recognize():
 
 
 def runSpeechRecogizer():
-    import .tts
+    import tts
     import requests
-    import .crawling
+    #import .crawling
     msg = voice_recognize()
     msg = msg = msg.replace(" ","")
     print("input message: [{}]".format(msg))

@@ -7,7 +7,7 @@ import TutorialContainer from './Container/TutorialContainer/TutorialContainer';
 
 function App() {
   return (
-    <RegisterNameContainer/>
+    <StartLoddingContainer />
   );
 }
 

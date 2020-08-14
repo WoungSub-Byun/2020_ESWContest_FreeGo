@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './TutorialContainer.css';
+import './TutorialContainer.scss';
 import Img1 from './img1.png';
 import Img2 from './img2.png';
 

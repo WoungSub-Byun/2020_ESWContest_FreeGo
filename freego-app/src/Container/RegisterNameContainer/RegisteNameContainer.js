@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import NextButton from '../../Components/Button/NextButton/NextButton';
-import './RegisterNameContainer.css'
+import './RegisterNameContainer.scss'
 import Logo from '../../Components/Logo/Logo';
 
 class RegisterNameContainer extends Component {

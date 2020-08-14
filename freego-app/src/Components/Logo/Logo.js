@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import './Logo.css';
+import classNames from 'classnames';
+import './Logo.scss';
 import logo from './snow.png';
 
 class Logo extends Component {
@@ -10,15 +11,11 @@ class Logo extends Component {
 
     render() {
         const { page } = this.props;
-        var handleClassName = "";
-        if (page == "startcontainer"){
-            handleClassName = 'start';
-        }
 
         return (
-            <div className={handleClassName+"frame"}>
-                <img src={logo} className={handleClassName+"img"} alt="snow" />
-                <b className={handleClassName+"Logo"}>freego</b>
+            <div className={classNames('frame', page)}>
+                <img src={logo} className={classNames('img', page)} alt="snow" />
+                <b className={classNames('Logo', page)}>freego</b>
             </div>
         )
     }
