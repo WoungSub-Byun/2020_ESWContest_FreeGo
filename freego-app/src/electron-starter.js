@@ -10,7 +10,7 @@ function createWindow () {
     webPreferences: {
       nodeIntegration: true
     },
-    frame: true
+    frame: false
   })
   win.setMenuBarVisibility(false)
 

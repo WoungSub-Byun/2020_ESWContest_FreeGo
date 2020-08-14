@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
-import Logo from '../../Components/Logo/Logo';
-import './StartLoddingContainer.scss'
+import './StartLoddingContainer.css'
+import StartLogo from '../../Components/Logo/Logo';
 
-class StartLoddingPage extends Component {
+class StartLoddingContainer extends Component {
     render() {
         return (
             <div className="mainframe">
-                <Logo />
+                <StartLogo page="startcontainer"/>
             </div>
         )
     }
 }
 
-export default StartLoddingPage;
+export default StartLoddingContainer;
