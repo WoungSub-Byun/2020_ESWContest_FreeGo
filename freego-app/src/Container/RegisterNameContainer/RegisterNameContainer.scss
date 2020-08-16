@@ -1,39 +1,38 @@
-input[type=text] {
-  background: transparent;
-  border: none;
-  border-bottom: 1px solid #000000;
-  font-size: 25px;
-  width: 283px;
+input[type='text'] {
+	background: transparent;
+	border: none;
+	border-bottom: 1px solid #000000;
+	font-size: 25px;
+	width: 283px;
 
-  position: absolute;
-  left: 98px;
-  top: 400px;
+	position: absolute;
+	left: 98px;
+	top: 400px;
 }
 
-p{
-  font-family: 'Roboto Condensed', sans-serif;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 30px;
-  line-height: 35px;
+p {
+	font-family: 'Roboto Condensed', sans-serif;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 30px;
+	line-height: 35px;
 
-  letter-spacing: -1px;
-  color: #4F4F4F;
+	letter-spacing: -1px;
+	color: #4f4f4f;
 
-  position: absolute;
-  left: 115px;
-  top: 264px;
+	position: absolute;
+	left: 115px;
+	top: 264px;
 }
 
-
-.logo{
-  position: absolute;
-  left: 28px;
-  top: 21px;
+.logo {
+	position: absolute;
+	left: 28px;
+	top: 21px;
 }
 
-.btn{
-  position: absolute;
-  left: 146px;
-  top: 492px;
+.btn {
+	position: absolute;
+	left: 146px;
+	top: 492px;
 }

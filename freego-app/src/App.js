@@ -3,12 +3,10 @@ import StartLoddingContainer from './Container/StartLoddingContainer/StartLoddin
 import AddIngredientContainer from './Container/AddIngredientContainer/AddIngredientContainer';
 import RegisterNameContainer from './Container/RegisterNameContainer/RegisteNameContainer';
 import TutorialContainer from './Container/TutorialContainer/TutorialContainer';
-
+import PyTest from './Container/pytest';
 
 function App() {
-  return (
-    <StartLoddingContainer />
-  );
+	return <PyTest />;
 }
 
 export default App;

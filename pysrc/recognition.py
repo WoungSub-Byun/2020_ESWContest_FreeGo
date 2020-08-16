@@ -3,9 +3,11 @@ def voice_recognize():
     import wave
     import keyboard
     import speech_recognition as sr
+    import array
 
     FORMAT = pyaudio.paInt16
-    CHANNELS = 1
+    CHANNELS = 1 #change this to what your sound card supports
+    #input_device_index => change this your input sound card index
     RATE = 16000
     CHUNK = 1024
     WAVE_OUTPUT_FILENAME = "file.wav"
@@ -21,14 +23,16 @@ def voice_recognize():
     while True:
         try:
             print("recording................")
+            
             frames = []
+
             while True:
                 if keyboard.is_pressed("s"):
-                    data = stream.read(CHUNK)
-                    frames.append(data)
-                if keyboard.is_pressed("q"):
+                    print('s pressed...')
+                    while not keyboard.is_pressed("q"):
+                        data = stream.read(CHUNK, exception_on_overflow = False)
+                        frames.append(data)
                     break
-                        
 
             stream.stop_stream()
             stream.close()
@@ -48,34 +52,38 @@ def voice_recognize():
 
         except Exception as err:
             print("Error Log : [{}]".format(err))   
-            return 'fail'
+            return "fail"
 
 
-def runSpeechRecogizer():
-    import tts
+def runSpeechRecognizer(id):
+    from tts import speech
     import requests
-    #import .crawling
+    import crawling
+
     msg = voice_recognize()
-    msg = msg = msg.replace(" ","")
+    msg = msg.replace(" ","")
     print("input message: [{}]".format(msg))
 
     if msg == "목록보여줘":
-        tts.speech("알겠습니다")
-        body = {'id' : '내 냉장고1'}
+        speech("알겠습니다")
+        body = {'id' : id}
         res = requests.post('13.125.244.112:5000/show', data=body)
-        print(res)
+        return res
+
     elif "요리알려줘" in msg:
-        tts.speech("알겠습니다")
+        speech("알겠습니다")
         msg = msg.replace("요리알려줘","")
         res = crawling.find_reciepe(msg)
-        print(res)
+        return res
+
     elif "있어" in msg:
+        speech("찾아볼게요")
         msg = msg.replace("있어","")
-        body = {'id' : '내 냉장고1', 'p_name' : "오이" }
+        body = {'id' : id, 'p_name' : msg }
         res = requests.post('13.125.244.112:5000/find', data=body)
-        print(res)
+        return res
     else:
-        tts.speech("인식하지 못했습니다.")
+        speech("인식하지 못했습니다.")
         return "fail"
 
 
