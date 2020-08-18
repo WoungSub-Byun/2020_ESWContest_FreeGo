@@ -14,7 +14,6 @@
         android:layout_height="400dp"
         android:layout_marginStart="41dp"
         android:layout_marginTop="88dp"
-        android:alpha="0"
         android:src="@drawable/guide1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.05"
@@ -29,8 +28,7 @@
         android:layout_marginBottom="72dp"
         android:src="@drawable/guide1_button"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:alpha="0"/>
+        app:layout_constraintEnd_toEndOf="parent"/>
 
     <TextView
         android:id="@+id/guide1Text"
@@ -43,7 +41,6 @@
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:alpha="0"/>
+        app:layout_constraintTop_toTopOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
