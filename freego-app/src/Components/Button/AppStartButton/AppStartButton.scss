@@ -1,0 +1,27 @@
+button {
+	font-family: 'Roboto', sans-serif;
+	font-size: 20px;
+	font-style: normal;
+	color: rgb(82, 82, 82);
+	padding: 15px;
+	padding-right: 45px;
+	padding-left: 45px;
+	background: white;
+	border-radius: 7px;
+	border: none;
+	cursor: pointer;
+
+	/* 마우스 오버(마우스 올렸을때) */
+	&:hover {
+		border: 1px solid rgb(153, 153, 153);
+		color: black;
+	}
+	/* 마우스 클릭하고있을때 */
+	&:active {
+		border: 1px solid rgb(65, 107, 245);
+	}
+	/* 마우스 한번클릭후 */
+	a:visited {
+		border: 1px solid rgb(65, 107, 245);
+	}
+}

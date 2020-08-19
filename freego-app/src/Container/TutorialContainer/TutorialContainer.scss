@@ -1,3 +1,9 @@
+.mainframe {
+	background: #1b76ff;
+	width: 480px;
+	height: 800px;
+}
+
 .skipbtn {
 	position: absolute;
 	width: 60px;
@@ -26,7 +32,7 @@
 
 span {
 	position: absolute;
-	left: 25px;
+	left: 35px;
 	top: 87px;
 	z-index: 1;
 
@@ -42,28 +48,34 @@ span {
 	text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.3);
 }
 
-.img1 {
+.explainImg {
 	position: absolute;
 	width: 314.72px;
 	height: 504.44px;
-	left: 41px;
+	left: 17%;
 	top: 139px;
 
 	filter: drop-shadow(5px 4px 6px rgba(0, 0, 0, 0.25));
+	&.3 {
+		width: 280px;
+		height: 460px;
+		left: 25%;
+		top: 20%;
+	}
 }
 
-.clickmotion {
+.motion {
 	position: absolute;
 	width: 142px;
 	height: 143px;
 	left: 320.38px;
-	top: 591.74px;
+	top: 581.74px;
 }
 
 .circles {
 	position: absolute;
 	bottom: 10%;
-	left: 37%;
+	left: 40%;
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
@@ -80,5 +92,35 @@ span {
 		&.fill {
 			background-color: white;
 		}
+	}
+}
+
+.Buttons {
+	.lastButton {
+		font-size: 50px;
+		position: absolute;
+		left: 5%;
+		top: 45%;
+		color: white;
+		&:hover {
+			cursor: pointer;
+		}
+	}
+	.nextButton {
+		font-size: 50px;
+		position: absolute;
+		right: 5%;
+		top: 45%;
+		color: white;
+
+		&:hover {
+			cursor: pointer;
+		}
+	}
+
+	.appStartButton {
+		position: absolute;
+		bottom: 10%;
+		left: 33%;
 	}
 }

@@ -1,12 +1,13 @@
 import React from 'react';
-import StartLoddingContainer from './Container/StartLoddingContainer/StartLoddingContainer';
-import AddIngredientContainer from './Container/AddIngredientContainer/AddIngredientContainer';
-import RegisterNameContainer from './Container/RegisterNameContainer/RegisteNameContainer';
-import TutorialContainer from './Container/TutorialContainer/TutorialContainer';
-import PyTest from './Container/pytest';
+import Router from './Router';
+import { BrowserRouter } from 'react-router-dom';
 
-function App() {
-	return <PyTest />;
-}
+const App = () => {
+	return (
+		<BrowserRouter>
+			<Router />
+		</BrowserRouter>
+	);
+};
 
 export default App;
