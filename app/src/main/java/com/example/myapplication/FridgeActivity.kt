@@ -55,7 +55,7 @@ class FridgeActivity : AppCompatActivity() {
             })
 
             itemList.setOnItemClickListener{ parent: AdapterView<*>, view: View, position: Int, id: Long ->
-
+                //intent로 dataList position 번째 데이터를 모두 옮긴다.
             }
         }
         else {
