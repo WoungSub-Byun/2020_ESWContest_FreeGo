@@ -5,10 +5,16 @@ import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.create
 
 class RetrofitHelper {
-    fun getRetrofit() : FridgeAPI{
-        return Retrofit.Builder()
-            .baseUrl("")
-            .addConverterFactory(GsonConverterFactory.create())
-            .build().create(FridgeAPI::class.java)
+
+    val retrofit: Retrofit = Retrofit.Builder()
+        .baseUrl("")
+        .addConverterFactory(GsonConverterFactory.create())
+        .build()
+
+    fun getFridgeAPI() : FridgeAPI{
+        return retrofit.create(FridgeAPI::class.java)
+    }
+    fun getUserAPI() : UserAPI{
+        return retrofit.create(UserAPI::class.java)
     }
 }

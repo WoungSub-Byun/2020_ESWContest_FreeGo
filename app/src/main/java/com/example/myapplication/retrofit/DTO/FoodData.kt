@@ -2,7 +2,7 @@ package com.example.myapplication.retrofit.DTO
 
 data class FoodData(
     val code : Int,
-    val data : ArrayList<Food>,
+    val data : ArrayList<Food>? = null,
     val message : String
 )
 
