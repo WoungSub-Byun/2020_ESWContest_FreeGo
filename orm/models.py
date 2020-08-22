@@ -1,16 +1,18 @@
 from sqlalchemy import Column, String, Integer, Date, ForeignKey
 from .db import Base
 
-# class USERS_TB(Base):
-#     __tablename__ = 'USERS_TB'
+class USERS_TB(Base):
+    __tablename__ = 'USERS_TB'
 
-#     id = Column(String(30), primary_key=True)
+    id = Column(String(30), primary_key=True)
+    pwd = Column(String(50))
 
-#     def __init__(self, id):
-#         self.id = id
+    def __init__(self, id, pwd):
+        self.id = id
+        self.pwd = pwd
 
-#     def __repr__(self):
-#         return "USERS_TB(id={})".format(self.id)
+    def __repr__(self):
+        return "USERS_TB(id={}, pw={})".format(self.id, self.pwd)
 
 
 class PRODUCT_TB(Base):

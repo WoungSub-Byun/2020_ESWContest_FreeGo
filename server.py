@@ -23,23 +23,32 @@ def create_table():
     return jsonify({"code" : 200,
                     "message": "success"})
 
-# @app.route('/register', methods=['POST'])
-# def register_entry():
+@app.route('/register', methods=['POST'])
+def register_entry():
 
-#     data = request.get_json()
-    
-#     result = controller.register_user(data['id'])
-#     if result == 'fail':
-#         return jsonify({"code": 400,
-#                         "message":"fail"})
-#     return jsonify({"code": 200,
-#                     "message": "register success"})
-
-@app.route('/show', methods=['POST'])
-def show_entry():
     data = request.get_json()
     
-    result = controller.show_data(data['id'])
+    result = controller.register_user(data['id'], data['pwd'])
+    if result == 'fail':
+        return jsonify({"code": 400,
+                        "message":"fail"})
+    return jsonify({"code": 200,
+                    "message": "register success"})
+
+@app.route('/finduser/<username>', methods=['GET'])
+def find_user(username):
+    result = controller.find_user(username)
+
+    if result == 'fail':
+        return jsonify({"code": 400, "message": "fail"})
+    elif result == True:
+        return jsonify({"code": 200, "message": "existed"})
+    elif not result:
+        return jsonify({"code": 404, "message": "not exist"})
+
+@app.route('/show/<username>', methods=['GET'])
+def show_entry(username):
+    result = controller.show_data(username)
 
     if result == 'fail':
         return jsonify({"code":404,
@@ -49,26 +58,24 @@ def show_entry():
                     "message": "success",
                     "data": result})
 
-@app.route('/find', methods=['POST'])
-def find_data():
-    
-    data = request.get_json()
-    id = data['id']
-    p_name = data['p_name']
+@app.route('/find/<username>', methods=['GET'])
+def find_data(username):
+    id = username
+    p_name = request.args.get('p_name','fail')
     
     result = controller.find_data(id, p_name)
     if result == 'fail':
         return jsonify({"code":404,
                         "message" : "fail"})
+
     return jsonify({"code":200,
                     "message": "success",
                     "data": result})
 
 
-@app.route('/late', methods=['POST'])
-def show_lated():
-    data = request.get_json()
-    result = controller.find_lated(data['id'])
+@app.route('/late/<username>', methods=['GET'])
+def show_lated(username):
+    result = controller.find_lated(username)
     if len(result) == 0:
         return jsonify({"code": 200,
                     "message": "no lated data"})
@@ -80,9 +87,9 @@ def show_lated():
                     "data": result})
     
 
-@app.route('/update', methods=['POST'])
+@app.route('/update', methods=['PUT'])
 def update_entry():
-    if request.method == 'POST':
+    if request.method == 'PUT':
         data = request.get_json()
         
         id = data["id"]
@@ -134,7 +141,7 @@ def insert_entry():
                             "message": "already exist"})
         
 # Delete data from database
-@app.route('/delete', methods=['POST'])
+@app.route('/delete', methods=['DELETE'])
 def delete_entry():
     data = request.get_json()
     result = controller.delete_data(data["id"], data["p_name"])
@@ -149,10 +156,9 @@ def delete_entry():
 #Use the Barcode
 ##
 #Lookup the gtin num in database
-@app.route('/lookupcode', methods=['POST'])
-def select_barcode():
-    data = request.get_json()
-    result = find_code(data["gtin"])
+@app.route('/lookupcode/<int:code>', methods=['GET'])
+def select_barcode(code):
+    result = find_code(code)
 
     if not result: #There's no data for barcode from user
         return jsonify({"code": 404,
@@ -176,6 +182,9 @@ def find_code(GTIN):
     if not rows:
         return False
     return list(rows[0])
+
+
+
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)

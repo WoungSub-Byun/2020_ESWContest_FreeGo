@@ -1,5 +1,5 @@
 from .db import init_db, db_session
-from .models import PRODUCT_TB
+from .models import PRODUCT_TB, USERS_TB
 from datetime import datetime
 
 def create_table():
@@ -10,15 +10,27 @@ def create_table():
         print("Error Log: [{}]".format(err))
         return 'fail'
 
-# def register_user(id):
-#     try:
-#         table = USERS_TB(id = id)
-#         db_session.add(table)
-#         db_session.commit()
-#         return 'success'
-#     except Exception as err:
-#         print("Error Log: [{}]".format(err))
-#         return 'fail'
+def register_user(id, pwd):
+    try:
+        table = USERS_TB(id = id, pwd = pwd)
+        db_session.add(table)
+        db_session.commit()
+        return 'success'
+    except Exception as err:
+        print("Error Log: [{}]".format(err))
+        return 'fail'
+
+def find_user(id):
+    try:
+        queries = db_session.query(USERS_TB).filter(USERS_TB.id == id)
+        if len(queries) == 0:
+            return False
+        else:
+            return True
+    except Exception as err:
+        print('Error Log: [{}]'.format(err))
+        return 'fail'
+
 
 def show_data(id):
     try:

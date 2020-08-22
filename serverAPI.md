@@ -1,33 +1,19 @@
-API 명세
-=
-초기 테이블 생성
--
-``` 
-    GET /init
+# product table 관련API 명세
+
+## 재료 목록 조회
+
 ```
-- Request
-```
-```
-- Response
-```
-{
-    SUCCESS { "code" : 200, "message": "init success" }
-    FAIL { "code" : 400, "message" : "fail" }
-}
+    GET /show/{id}
 ```
 
-재료 목록 조회
--
-```
-    POST /show
-```
 - Request
+
 ```
-{
-    "id": "내 냉장고1"
-}
+
 ```
+
 - Response
+
 ```
     SUCCESS { "code": 200,
             "data": [
@@ -43,19 +29,21 @@ API 명세
 
     FAIL { "code" : 404, "message" : "fail" }
 ```
-재료 존재여부 확인
--
-``` 
-    POST /find
+
+## 재료 존재여부 확인
+
 ```
+    GET /find/{id}?p_name=동원참치
+```
+
 - Request
+
 ```
-{
-    "id" : "내 냉장고1",
-    "p_name" : "동원참치"
-}
+
 ```
+
 - Response
+
 ```
 {
     SUCCESS { "code" : 200, "message": "find success" }
@@ -63,18 +51,20 @@ API 명세
 }
 ```
 
-유통기한 지난 재료 조회
--
+## 유통기한 지난 재료 조회
+
 ```
-    POST /late
+    GET /late/{id}
 ```
+
 - Request
+
 ```
-{
-    "id" : "내 냉장고1"
-}
+
 ```
+
 - Response
+
 ```
     SUCCESS {"code": 200,
             "data": [
@@ -87,16 +77,18 @@ API 명세
             ],
             "message" : "select success"
     }
-
+    NO LATED DATA {"code": 200, "message": "no lated data"}
     FAIL { "code" : 404, "message" : "fail" }
 ```
 
-재료 추가
--
+## 재료 추가
+
 ```
     POST /insert
 ```
+
 - Request
+
 ```
 {
     "id" : "내 냉장고1",
@@ -105,18 +97,23 @@ API 명세
     "p_ex_date" : 20230807
 }
 ```
+
 - Response
+
 ```
     SUCCESS { "code": 200, "message": "insert success" }
     FAIL { "code": 404, "message": "fail" }
     FAIL { "code": 404, "message": "already exist" }
 ```
-재료 수량 수정
--
+
+## 재료 수량 수정
+
 ```
-    POST /update
+    PUT /update
 ```
+
 - Request
+
 ```
 {
     "id" : "내 냉장고1",
@@ -124,40 +121,50 @@ API 명세
     "p_number" : 5
 }
 ```
+
 - Response
+
 ```
     SUCCESS { "code": 200, "message": "update success" }
     FAIL { "code": 404, "message": "fail" }
 ```
-재료 삭제
--
+
+## 재료 삭제
+
 ```
-    POST /delete
+    DELETE /delete
 ```
+
 - Request
+
 ```
 {
     "id" : "내 냉장고1",
     "p_name" : "동원참치"
 }
 ```
+
 - Response
+
 ```
     SUCCESS { "code": 200, "message": "delete success" }
     FAIL { "code": 404, "message": "fail" }
 ```
-바코드정보로 상품정보 조회
--
+
+## 바코드정보로 상품정보 조회
+
 ```
-    POST /lookupcode
+    GET /lookupcode/{int:code}
 ```
+
 - Request
+
 ```
-{
-    "gtin": 0000000000000 #13자리수
-}
+
 ```
+
 - Response
+
 ```
     SUCCESS {"code": 200,
             "data": [
