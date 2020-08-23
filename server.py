@@ -50,7 +50,7 @@ def find_user(username):
 
 
 
-@app.route('/login', methods=['GET'])
+@app.route('/login', methods=['POST'])
 def login_user():
     data = request.get_json()
     id = data["id"]
