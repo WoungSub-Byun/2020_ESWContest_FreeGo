@@ -46,6 +46,26 @@ def find_user(username):
     elif not result:
         return jsonify({"code": 404, "message": "not exist"})
 
+
+
+@app.route('/login', methods=['GET'])
+def login_user():
+    data = request.get_json()
+    id = data["id"]
+    password = data["pwd"]
+
+    result = controller.login_user(id, password)
+
+    if result == 'fail':
+        return jsonify({"code": 400, "message":"fail"})
+    elif result == "id not found":
+        return jsonify({"code": 404, "message": "id not found"})
+    elif result == "pwd is wrong":
+        return jsonify({"code" : 404, "message": "pwd is wrong"})
+    else:
+        return jsonify({"code": 200, "message": "login success"})
+
+
 @app.route('/show/<username>', methods=['GET'])
 def show_entry(username):
     result = controller.show_data(username)

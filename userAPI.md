@@ -45,3 +45,30 @@
     FAIL { "code" : 400, "message" : "fail" }
 }
 ```
+
+## 로그인
+
+```
+    POST /login
+```
+
+- Request
+
+```
+{
+    "id" : "test",
+    "pwd" : "password"
+}
+
+```
+
+- Response
+
+```
+{
+    SUCCESS { "code" : 200, "message": "login success" }
+    SUCCESS pwd not found {"code" : 404, "message": "pwd is wrong"}
+    SUCCESS id not found {"code" : 404, "message": "id not found"}
+    FAIL { "code" : 400, "message" : "fail" }
+}
+```
