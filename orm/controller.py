@@ -12,10 +12,13 @@ def create_table():
 
 def register_user(id, pwd):
     try:
-        table = USERS_TB(id = id, pwd = pwd)
-        db_session.add(table)
-        db_session.commit()
-        return 'success'
+        if not find_user(id):
+            table = USERS_TB(id = id, pwd = pwd)
+            db_session.add(table)
+            db_session.commit()
+            return 'success'
+        else:
+            return "id already existed"
     except Exception as err:
         print("Error Log: [{}]".format(err))
         return 'fail'

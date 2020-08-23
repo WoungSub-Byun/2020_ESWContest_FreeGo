@@ -32,6 +32,8 @@ def register_entry():
     if result == 'fail':
         return jsonify({"code": 400,
                         "message":"fail"})
+    elif result == "id existed":
+        return jsonify({"code": 400, "message": "id already existed"})
     return jsonify({"code": 200,
                     "message": "register success"})
 

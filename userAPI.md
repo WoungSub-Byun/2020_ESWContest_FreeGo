@@ -10,7 +10,7 @@
 
 ```
 {
-    "id" : "내 냉장고1",
+    "id" : "test",
     "pwd" : "password"
 }
 ```
@@ -20,6 +20,7 @@
 ```
 {
     SUCCESS { "code" : 200, "message": "register success" }
+    SUCCESS id existed { "code" 400, "message": "id already existed"}
     FAIL { "code" : 400, "message" : "fail" }
 }
 ```
