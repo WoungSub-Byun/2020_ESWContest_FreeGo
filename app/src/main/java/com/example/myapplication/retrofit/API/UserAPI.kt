@@ -18,4 +18,9 @@ interface UserAPI {
     fun getUser(
         @Path("id") id: String
     ) : Call<FirstData>
+    @POST("/login")
+    fun login(
+        @Field("id") id: String,
+        @Field("pwd") pwd: String
+    ) : Call<FirstData>
 }

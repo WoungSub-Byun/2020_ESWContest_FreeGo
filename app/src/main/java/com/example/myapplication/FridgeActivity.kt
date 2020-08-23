@@ -28,14 +28,16 @@ class FridgeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_fridge)
+        val intent = intent
 
-        val id: String? = getData()
+        val id = intent.getStringExtra("name")
+
         var dataList = ArrayList<Food>()
 
         if(id != null){
-            val service = RetrofitHelper().getRetrofit()
+            val service = RetrofitHelper().getFridgeAPI()
 
-            service.showFood(id).enqueue(object : Callback<FoodData>{
+            service.getTable(id).enqueue(object : Callback<FoodData>{
                 override fun onFailure(call: Call<FoodData>, t: Throwable) {
                     Log.d("ERROR",t.toString())
                 }
@@ -44,8 +46,12 @@ class FridgeActivity : AppCompatActivity() {
                     if(response.isSuccessful) {
                         Log.d("CODE", response.body()!!.code.toString())
                         if (response.body()!!.code == 200) {
-                            dataList = response.body()!!.data
+                            dataList = response.body()!!.data!!
                             Log.d("MESSAGE", response.body()!!.message)
+                            if(dataList.size == 0){
+                                itemList.setBackgroundColor(Color.GRAY)
+                                textView3.alpha = 1f
+                            }
                             val adapter =
                                 ItemListAdapter(this@FridgeActivity, dataList, R.layout.food_row)
                             itemList.adapter = adapter
@@ -63,17 +69,5 @@ class FridgeActivity : AppCompatActivity() {
             itemList.setBackgroundResource(Color.GRAY)
         }
 
-    }
-
-    fun saveData(id : String){
-        val pref = getSharedPreferences("id", Context.MODE_PRIVATE)
-        val editor = pref.edit()
-        editor.putString("id",id)
-        editor.apply()
-    }
-
-    fun getData() : String? {
-        val pref = getSharedPreferences("id", Context.MODE_PRIVATE)
-        return pref.getString("id",null)
     }
 }
