@@ -83,9 +83,9 @@ def find_lated(id):
         print('Error Log: [{}]'.format(err))
         return 'fail'   
 
-def insert_data(id, p_name, p_number, p_ex_date):    
+def insert_data(id, p_name, p_number, p_ex_date, img_link):    
     try:
-        f = PRODUCT_TB(id = id, p_name = p_name, p_number = p_number, p_ex_date = p_ex_date)
+        f = PRODUCT_TB(id = id, p_name = p_name, p_number = p_number, p_ex_date = p_ex_date, img_link=img_link)
         db_session.add(f)
         db_session.commit()
         return 'success'

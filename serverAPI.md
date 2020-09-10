@@ -21,7 +21,8 @@
                     "id": "내 냉장고1",
                     "p_ex_date": "Mon, 31 Aug 2020 00:00:00 GMT",
                     "p_name": "가지",
-                    "p_number": 4
+                    "p_number": 4,
+                    "img_link": "http://이미지링크" # or ""
                 }, ...
             ],
             "message" : "select success"
@@ -72,7 +73,8 @@
                     "id" : "내 냉장고1",
                     "p_ex_date" : "Mon, 31 Aug 2020 00:00:00 GMT",
                     "p_name": "가지",
-                    "p_number" : 4
+                    "p_number" : 4,
+                    "img_link" : "http://이미지링크" # or ""
                 }, ...
             ],
             "message" : "select success"
@@ -84,7 +86,7 @@
 ## 재료 추가
 
 ```
-    POST /insert
+    POST /insert?code=0000000000000
 ```
 
 - Request

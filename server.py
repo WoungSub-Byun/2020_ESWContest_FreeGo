@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, redirect
 import json
 import datetime
 import sqlite3, os
@@ -137,8 +137,13 @@ def update_entry():
 @app.route('/insert', methods=['POST'])
 def insert_entry():
     if request.method == 'POST':
-        
-        data = data = request.get_json()
+        code = request.args.get("code")
+        has_img = find_code(code)
+        img_link = ""
+        if has_img:
+            img_link = has_img[4]
+        data =  request.get_json()
+
         id = data["id"]
         p_name = data["p_name"]
 
@@ -151,7 +156,7 @@ def insert_entry():
             p_number = int(p_number)
             p_ex_date = datetime.datetime.strptime(str(p_ex_date), "%Y-%m-%d").date()
                 
-            result = controller.insert_data(id , p_name, p_number, str(p_ex_date))
+            result = controller.insert_data(id , p_name, p_number, str(p_ex_date), img_link)
 
             if result == 'fail':
                 return jsonify({"code": 404,
@@ -177,6 +182,8 @@ def delete_entry():
 ##
 #Use the Barcode
 ##
+
+
 #Lookup the gtin num in database
 @app.route('/lookupcode/<int:code>', methods=['GET'])
 def select_barcode(code):
