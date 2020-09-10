@@ -1,14 +1,6 @@
-from .db import init_db, db_session
+from ..db import db_session
 from .models import PRODUCT_TB, USERS_TB
 from datetime import datetime
-
-def create_table():
-    try:
-        init_db()
-        return 'success'
-    except Exception as err:
-        print("Error Log: [{}]".format(err))
-        return 'fail'
 
 def register_user(id, pwd):
     try:

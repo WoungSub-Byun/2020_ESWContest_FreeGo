@@ -3,7 +3,7 @@
 ## 기기 등록
 
 ```
-    POST /register
+    POST /auth/register
 ```
 
 - Request
@@ -28,7 +28,7 @@
 ## 기기 존재 확인
 
 ```
-    GET /finduser/{id}
+    GET /auth/find/{id}
 ```
 
 - Request
@@ -50,7 +50,7 @@
 ## 로그인
 
 ```
-    POST /login
+    POST /auth/login
 ```
 
 - Request

@@ -3,7 +3,7 @@
 ## 재료 목록 조회
 
 ```
-    GET /show/{id}
+    GET /material/show/{id}
 ```
 
 - Request
@@ -34,7 +34,7 @@
 ## 재료 존재여부 확인
 
 ```
-    GET /find/{id}?p_name=동원참치
+    GET /material/find/{id}?p_name=동원참치
 ```
 
 - Request
@@ -55,7 +55,7 @@
 ## 유통기한 지난 재료 조회
 
 ```
-    GET /late/{id}
+    GET /material/late/{id}
 ```
 
 - Request
@@ -86,7 +86,7 @@
 ## 재료 추가
 
 ```
-    POST /insert?code=0000000000000
+    POST /material/insert?code=0000000000000
 ```
 
 - Request
@@ -111,7 +111,7 @@
 ## 재료 수량 수정
 
 ```
-    PUT /update
+    PUT /material/update
 ```
 
 - Request
@@ -134,7 +134,7 @@
 ## 재료 삭제
 
 ```
-    DELETE /delete
+    DELETE /material/delete
 ```
 
 - Request
@@ -156,7 +156,7 @@
 ## 바코드정보로 상품정보 조회
 
 ```
-    GET /lookupcode/{int:code}
+    GET /code/lookupcode/{int:code}
 ```
 
 - Request

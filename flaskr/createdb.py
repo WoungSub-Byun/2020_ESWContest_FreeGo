@@ -21,7 +21,6 @@ def createTable():
     conn.commit()
 
 def Insert():
-    #os.chdir('C:\\workspace\\freego\\server')
     conn = sqlite3.connect('barcode.db')
     cs = conn.cursor()
     xls = pd.read_excel('barcodedata.xlsx')
@@ -61,9 +60,11 @@ def selectValue():
     cs.execute(query)
     rows = cs.fetchall()
     if not rows:
+        conn.close()
         return "table is empty"
-    return True
     conn.close()
+    return True
+    
 
     
 
