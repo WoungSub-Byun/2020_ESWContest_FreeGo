@@ -6,6 +6,8 @@
     GET /material/show/{id}
 ```
 
+http://10.10.10.10/material/show/mun
+
 - Request
 
 ```
@@ -88,6 +90,8 @@
 ```
     POST /material/insert?code=0000000000000
 ```
+
+http:/10.10.10.10:5000/material/insert?code=1313131313
 
 - Request
 
