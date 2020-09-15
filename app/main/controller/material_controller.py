@@ -4,7 +4,7 @@ from flask import redirect
 from flask import request
 from flask import jsonify
 from ..service import product_service
-from .code import find_code
+from ..model.find_code import find_code
 
 api = Blueprint("material", __name__, url_prefix='/material')
 

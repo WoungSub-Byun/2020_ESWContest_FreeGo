@@ -13,13 +13,13 @@ def create_app(config_name):
     flask_bcrypt.init_app(app)
 
     #apply blueprint to the app
-    # from main import auth, material, code
+    from .controller import auth_controller, material_controller, barcode_controller
 
-    # app.register_blueprint(auth.api)
-    # app.register_blueprint(material.api)
-    # app.register_blueprint(code.api)
+    app.register_blueprint(auth_controller.api)
+    app.register_blueprint(material_controller.api)
+    app.register_blueprint(barcode_controller.api)
 
 
-    # app.add_url_rule("/", endpoint="index")
+    app.add_url_rule("/", endpoint="index")
 
     return app
