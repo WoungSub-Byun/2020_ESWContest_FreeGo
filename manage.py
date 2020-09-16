@@ -1,24 +1,21 @@
 import os
 import unittest
 
-from flask_migrate import Migrate, MigrateCommand
 from flask_script import Manager
-
-from app.main import create_app, db
-from app.main.model import user
+from app.main import create_app
+from .app.main.db import init_db
 
 app = create_app(os.getenv('BOILERPLATE_ENV') or 'dev')
 
 app.app_context().push()
 
 manager = Manager(app)
-migrate = Migrate(app, db)
 
-manager.add_command('db', MigrateCommand)
+manager.add_command('db init',init_db())
 
 @manager.command
 def run():
-    app.run()
+    app.run(host=0.0.0.0, port=5000)
 
 @manager.command
 def test():
