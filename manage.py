@@ -3,13 +3,14 @@ import unittest
 
 from flask_script import Manager
 from app.main import create_app
-from app.main.db import init_db
+from app.main import db
 
 app = create_app(os.getenv('BOILERPLATE_ENV') or 'dev')
 
 app.app_context().push()
 
-
+manager = Manager(app)
+manager.add_command('-dbinit', db.init_db())
 
 
 
