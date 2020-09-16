@@ -3,19 +3,19 @@ import unittest
 
 from flask_script import Manager
 from app.main import create_app
-from .app.main.db import init_db
+from app.main.db import init_db
 
 app = create_app(os.getenv('BOILERPLATE_ENV') or 'dev')
 
 app.app_context().push()
 
-manager = Manager(app)
 
-manager.add_command('db init',init_db())
+
+
 
 @manager.command
 def run():
-    app.run(host=0.0.0.0, port=5000)
+    app.run(host='0.0.0.0', port=5000)
 
 @manager.command
 def test():

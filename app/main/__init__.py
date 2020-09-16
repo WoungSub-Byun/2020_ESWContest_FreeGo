@@ -19,6 +19,6 @@ def create_app(config_name):
     app.register_blueprint(barcode_controller.api)
 
 
-    app.add_url_rule("/", endpoint="index")
+    
 
     return app

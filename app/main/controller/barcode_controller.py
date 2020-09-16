@@ -4,7 +4,7 @@ from ..model import find_code
 import sqlite3
 
 
-api = Blueprint("code", __name__, url_prefix='./code')
+api = Blueprint("code", __name__, url_prefix='/code')
 
 #Lookup the gtin num in database
 @api.route('/lookupcode/<int:code>', methods=['GET'])
